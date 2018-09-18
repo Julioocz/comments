@@ -14,7 +14,7 @@ const router = new Router();
 
 const fakeSleep = ms => new Promise(res => setTimeout(res, ms));
 
-const standardSleep = 10;
+const standardSleep = 3000;
 
 app.use(koaBody());
 
