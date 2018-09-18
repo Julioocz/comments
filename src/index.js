@@ -1,6 +1,7 @@
 const Koa = require('koa');
 const Router = require('koa-router');
 const koaBody = require('koa-body');
+const cors = require('@koa/cors');
 const chalk = require('chalk');
 const {
   addComment,
@@ -17,6 +18,7 @@ const fakeSleep = ms => new Promise(res => setTimeout(res, ms));
 const standardSleep = 3000;
 
 app.use(koaBody());
+app.use(cors());
 
 router.get('/comments', async (ctx, next) => {
   await fakeSleep(standardSleep);
