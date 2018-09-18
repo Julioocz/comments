@@ -7,4 +7,5 @@
       }
     ]
   ],
+  // "plugins": ["syntax-async-functions"]
 }
