@@ -2,6 +2,7 @@ const Koa = require('koa');
 const Router = require('koa-router');
 const koaBody = require('koa-body');
 const cors = require('@koa/cors');
+const error = require('koa-json-error');
 const chalk = require('chalk');
 const {
   addComment,
@@ -15,13 +16,14 @@ const router = new Router();
 
 const fakeSleep = ms => new Promise(res => setTimeout(res, ms));
 
-const standardSleep = 3000;
+const standardSleep = 1000;
 
 app.use(koaBody());
 app.use(cors());
+app.use(error());
 
 router.get('/comments', async (ctx, next) => {
-  await fakeSleep(standardSleep);
+  // await fakeSleep(standardSleep);
 
   ctx.body = await getComments();
 });
@@ -30,7 +32,6 @@ router.post('/comment', async (ctx, next) => {
   await fakeSleep(standardSleep);
 
   const { name, text } = ctx.request.body;
-
   if (!name || typeof name !== 'string' || name.length < 3) {
     ctx.throw(
       400,
@@ -39,6 +40,8 @@ router.post('/comment', async (ctx, next) => {
   }
 
   if (!text || typeof text !== 'string' || text === '') {
+    console.log(text === '');
+
     ctx.throw(400, 'The request must include some text');
   }
   // return addComment();
