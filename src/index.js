@@ -28,14 +28,14 @@ router.get('/comments', async (ctx, next) => {
   ctx.body = await getComments();
 });
 
-router.post('/comment', async (ctx, next) => {
+router.post('/comments', async (ctx, next) => {
   await fakeSleep(standardSleep);
 
   const { name, text } = ctx.request.body;
   if (!name || typeof name !== 'string' || name.length < 3) {
     ctx.throw(
       400,
-      'The request must include a name with a length greater than 2 characterste',
+      'The request must include a name with a length greater than 2 characters',
     );
   }
 
