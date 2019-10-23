@@ -3,7 +3,7 @@ import React from "react";
 const UserContext = React.createContext();
 
 export const UserProvider = props => {
-  const [user, setUser] = React.useState("Julio");
+  const [user, setUser] = React.useState(null);
 
   return <UserContext.Provider value={{ user, setUser }} {...props} />;
 };
