@@ -11,10 +11,12 @@ const Comment = ({ name, text, dateAdded, dateEdited }) => {
   const dateText = isEdited ? `Edited ${displayDate}` : `Sent ${displayDate}`;
 
   return (
-    <div className="bg-white w-full rounded shadow p-3 mb-2">
+    <div className="bg-white w-full rounded shadow p-3 pt-4 mb-2">
       <span className="text-sm text-gray-600 mb-1 block">{name}</span>
-      <p className="mb-1">{text}</p>
-      <span className="text-xs text-gray-600 text-right block">{dateText.toUpperCase()}</span>
+      <p>{text}</p>
+      <span className="text-xs text-gray-600 text-right block">
+        {dateText.toUpperCase()}
+      </span>
     </div>
   );
 };
