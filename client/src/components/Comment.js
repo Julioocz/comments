@@ -68,11 +68,13 @@ const Comment = ({ comment, onDelete, onUpdate }) => {
     );
   }
 
+  console.log({text})
+
   return (
     <CommentCard comment={comment}>
       <CommentActions onDelete={() => onDelete(id)} onEdit={toggleEditMode} />
       <CommentAuthor comment={comment} />
-      <p>{text}</p>
+      <p className="whitespace-pre-wrap">{text}</p>
       <span className="text-xs text-gray-600 text-right block">
         {dateText.toUpperCase()}
       </span>

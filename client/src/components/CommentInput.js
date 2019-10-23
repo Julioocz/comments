@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import PropTypes from "prop-types";
 import Button from "./Button";
 import api from "../api";
@@ -10,6 +10,9 @@ const CommentInput = ({ onNewComment }) => {
   const { user } = useUser();
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const areaRef = useRef(null);
+
+  const focusInput = () => areaRef.current.focus();
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -27,6 +30,8 @@ const CommentInput = ({ onNewComment }) => {
       .then(() => setInput(""))
       .then(() => setLoading(false))
       .then(scrollToBottom)
+      .then(() => areaRef.current.resetHeight())
+      .then(focusInput)
       .catch(errorHandler(() => setLoading(false)));
   };
 
@@ -37,6 +42,7 @@ const CommentInput = ({ onNewComment }) => {
       style={{ minHeight: "8rem"}}
     >
       <TextArea
+        ref={areaRef}
         placeholder="Write a comment..."
         className="rounded-l p-3"
         value={input}

@@ -16,18 +16,16 @@ const Login = props => {
   };
 
   return (
-    <div className="mt-10 w-full">
+    <div className="w-1/2 m-auto">
       <form onSubmit={handleSubmit} className="bg-white rounded p-4">
-        <p className="mb-4 text-xl">Input your name to get started</p>
-        <div className="flex w-10/12">
-          <input
-            className="focus:outline-none bg-gray-200 py-1 px-2 w-1/2 flex-grow"
-            placeholder="Your Name"
-            value={name}
-            onChange={handleNameChange}
-          />
-          <Button className="rounded-l-none">Save</Button>
-        </div>
+        <p className="mb-4 text-xl">Input your name</p>
+        <input
+          className="focus:outline-none bg-gray-200 py-2 w-full px-2 w-1/2 mb-4"
+          placeholder="Your Name"
+          value={name}
+          onChange={handleNameChange}
+        />
+        <Button className="w-full">Save</Button>
       </form>
     </div>
   );

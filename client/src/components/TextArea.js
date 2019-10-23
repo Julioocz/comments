@@ -15,6 +15,9 @@ const TextArea = ({ className, value, onChange, placeholder }, ref) => {
       const element = areaRef.current;
       element.focus();
       element.setSelectionRange(element.value.length, element.value.length); // Sets cursor to end of text area
+    },
+    resetHeight: () => {
+      setHeight("100%")
     }
   }));
 
