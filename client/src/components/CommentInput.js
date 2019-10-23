@@ -3,14 +3,13 @@ import PropTypes from "prop-types";
 import Button from "./Button";
 import api from "../api";
 import { useUser } from "../user-context";
-import {errorHandler, scrollToBottom} from "../helpers";
+import { errorHandler, scrollToBottom } from "../helpers";
+import TextArea from "./TextArea";
 
 const CommentInput = ({ onNewComment }) => {
   const { user } = useUser();
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const handleInput = event => setInput(event.target.value);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -34,15 +33,16 @@ const CommentInput = ({ onNewComment }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex items-end rounded h-32 bg-white shadow"
+      className="flex rounded bg-white shadow"
+      style={{ minHeight: "8rem"}}
     >
-      <textarea
-        className="focus:outline-none resize-none w-full h-full rounded-l p-3"
+      <TextArea
         placeholder="Write a comment..."
+        className="rounded-l p-3"
         value={input}
-        onChange={handleInput}
+        onChange={setInput}
       />
-      <Button type="submit" className="mb-2 mr-2" isLoading={loading}>
+      <Button type="submit" className="mb-2 mr-2 self-end" isLoading={loading}>
         Submit
       </Button>
     </form>

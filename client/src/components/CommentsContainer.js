@@ -48,12 +48,28 @@ const CommentsContainer = () => {
         );
   };
 
+  const updateComment = newComment =>
+    api
+      .put(`comment/${newComment.id}`, { json: newComment })
+      .json()
+      .then(newCommentResult =>
+        setComments(
+          comments.map(comment =>
+            newComment.id === comment.id ? {...comment, ...newCommentResult} : comment
+          )
+        ));
+
   const orderedComments = useMemo(() => sortComments(comments), [comments]);
 
   return (
     <div className="w-full">
       {orderedComments.map(comment => (
-        <Comment {...comment} key={comment.id} onDelete={deleteComment} />
+        <Comment
+          comment={comment}
+          key={comment.id}
+          onDelete={deleteComment}
+          onUpdate={updateComment}
+        />
       ))}
       <CommentInput onNewComment={addComment} />
     </div>
