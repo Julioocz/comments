@@ -51,6 +51,7 @@ router.post('/comments', async (ctx, next) => {
 router.delete('/comment/:id', async (ctx, next) => {
   await fakeSleep(standardSleep);
   const { id } = ctx.params;
+  console.log({id})
   try {
     await deleteComment(await getComments(), id);
     ctx.body = true;
