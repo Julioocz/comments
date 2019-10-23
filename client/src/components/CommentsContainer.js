@@ -26,8 +26,7 @@ const CommentsContainer = () => {
         api
           .get("comments/")
           .json()
-          .then(setComments)
-          .then(scrollToBottomOnce),
+          .then(setComments),
       LONG_POLLING_INTERVAL
     );
 
