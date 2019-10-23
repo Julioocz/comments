@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import Button from "./Button";
 
 const CommentInput = ({ onSubmit }) => {
   const [input, setInput] = useState("");
@@ -20,7 +21,7 @@ const CommentInput = ({ onSubmit }) => {
         value={input}
         onChange={handleInput}
       />
-      <button className="px-3 bg-teal-500 mb-2 mr-2 rounded text-white font-semibold h-10">Submit</button>
+      <Button className="mb-2 mr-2">Submit</Button>
     </form>
   );
 };

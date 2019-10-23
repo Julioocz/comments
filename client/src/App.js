@@ -3,8 +3,13 @@ import logo from "./logo.svg";
 import "./App.css";
 import Comment from "./components/Comment";
 import CommentInput from "./components/CommentInput";
+import { useUser } from "./user-context";
+import Login from "./components/Login";
+import AppContainer from "./components/AppContainer";
 
 function App() {
+  const { user } = useUser();
+
   const comments = [
     {
       name: "Tim",
@@ -16,16 +21,18 @@ function App() {
   ];
 
   return (
-    <div className="h-screen bg-teal-100 py-20 text-gray-800 font-sans">
-      <div className="flex h-full w-1/3 m-auto">
+    <AppContainer>
+      {!user ? (
+        <Login />
+      ) : (
         <div className="w-full">
           {comments.map(comment => (
             <Comment {...comment} key={comment.id} />
           ))}
           <CommentInput />
         </div>
-      </div>
-    </div>
+      )}
+    </AppContainer>
   );
 }
 
