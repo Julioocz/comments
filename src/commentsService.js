@@ -23,13 +23,13 @@ const editComment = async (comments, editedComment) => {
   await writeComments(
     comments.map(
       c =>
-        c.id === editComment.id
+        c.id === editedComment.id
           ? { ...c, ...editedComment, dateEdited: date }
           : c,
     ),
   );
   return {
-    ...comments.find(c => c.d === editComment.id),
+    ...comments.find(c => c.d === editedComment.id),
     ...editedComment,
     dateEdited: date,
   };

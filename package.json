@@ -12,8 +12,7 @@
     "@babel/core": "^7.1.0",
     "@babel/node": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
-    "babel-eslint": "^9.0.0",
-    "eslint": "^5.4.0",
+    "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "2.14.0"
   },
